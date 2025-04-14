@@ -1,0 +1,18 @@
+
+
+.image-3deffect {
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.image {
+  width: 80%;
+  height: 80%;
+  background-image: url('pic/pmp.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+}

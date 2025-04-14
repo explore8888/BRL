@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ddd;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* General text styles */
+.text {
+  color: brown;
+  font-size: 5rem; /* Scaled down from 220px for better responsiveness */
+  text-align: center;
+}
+
+.open {
+  color: green;
+  background: #000;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+/* Preloader */
+
+.container-preloader .animation-preloader img {
+  width: 80%; /* Adjust width as needed */
+  max-width: 300px; /* Set a max width if necessary */
+  height: auto; /* Ensure the height adjusts proportionally */
+  margin: 0 auto; /* Center the image */
+  display: block; /* Center image and remove extra spacing */
+}
+
+.container-preloader {
+  align-items: center;
+  cursor: none;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 900;
+  background: #000;
+}
+
+.container-preloader .animation-preloader {
+  position: absolute;
+  z-index: 100;
+}
+
+/* Spinner Loading */
+.container-preloader .animation-preloader .spinner {
+  animation: spinner 1s infinite linear;
+  border-radius: 50%;
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-top-color: green;
+  height: 9em;
+  width: 9em;
+  margin: 0 auto 3.5em auto;
+}
+
+/* Loading text */
+.container-preloader .animation-preloader .txt-loading {
+  font: bold 5em 'Montserrat', sans-serif;
+  text-align: center;
+  user-select: none;
+}
+
+.container-preloader .animation-preloader .txt-loading .characters:before {
+  animation: characters 4s infinite;
+  color: #0a699f;
+  content: attr(preloader-text);
+  position: absolute;
+  opacity: 0;
+  transform: rotateY(-90deg);
+}
+
+.container-preloader .animation-preloader .txt-loading .characters {
+  color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Delay for each character */
+.container-preloader .animation-preloader .txt-loading .characters:nth-child(2):before { animation-delay: 0.2s; }
+.container-preloader .animation-preloader .txt-loading .characters:nth-child(3):before { animation-delay: 0.4s; }
+.container-preloader .animation-preloader .txt-loading .characters:nth-child(4):before { animation-delay: 0.6s; }
+
+
+/* Loader Sections */
+.container-preloader .loader-section {
+  background-color: #ffffff;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: calc(50% + 1px);
+}
+
+.container-preloader .loader-section.section-left { left: 0; }
+.container-preloader .loader-section.section-right { right: 0; }
+
+/* Fade effect on loading animation */
+.loaded .animation-preloader { opacity: 0; transition: opacity 0.3s ease-out; }
+
+/* Curtain effect */
+.loaded .loader-section.section-left {
+  transform: translateX(-100%);
+  transition: transform 0.7s 0.3s cubic-bezier(0.1, 0.1, 0.1, 1.000);
+}
+
+.loaded .loader-section.section-right {
+  transform: translateX(100%);
+  transition: transform 0.7s 0.3s cubic-bezier(0.1, 0.1, 0.1, 1.000);
+}
+
+/* Animation of the preloader */
+@keyframes spinner {
+  to { transform: rotateZ(360deg); }
+}
+
+/* Animation of letters loading from the preloader */
+@keyframes characters {
+  0%, 75%, 100% {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+  25%, 50% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+
+/* Media Queries for Responsiveness */
+/* For tablet and small laptop screens */
+@media screen and (max-width: 767px) {
+  .text {
+    font-size: 3.5rem;
+  }
+
+  .container-preloader .animation-preloader .spinner {
+    height: 8em;
+    width: 8em;
+  }
+
+  .container-preloader .animation-preloader .txt-loading {
+    font: bold 3.5em 'Montserrat', sans-serif;
+  }
+}
+
+/* For mobile screens */
+@media screen and (max-width: 500px) {
+  .text {
+    font-size: 2.5rem;
+  }
+
+  .container-preloader .animation-preloader .spinner {
+    height: 7em;
+    width: 7em;
+  }
+
+  .container-preloader .animation-preloader .txt-loading {
+    font: bold 2em 'Montserrat', sans-serif;
+  }
+
+  .open {
+    font-size: 1.2rem;
+    padding: 5px;
+  }
+}
+
+/* Link Styles */
+.origin {
+  text-decoration: none;
+  font-size: 2rem; /* Reduced font size for mobile */
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+ 
